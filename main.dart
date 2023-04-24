@@ -15,23 +15,26 @@ class ComponenteInicial extends StatelessWidget{
       home: Scaffold(
         appBar:AppBar(
           title: Text("Perguntas e Respostas"),
-
         ), 
         body: Column(
           children: [
-           ElevatedButton(onPressed: eventoBotao
-           child: Text("Cancelar"))
-ElevatedButton(onPressed:eventoBotao,
-           child: Text("Salvar")),
-
-     Column(
-children:
-Text ("Aprendendo"),
-Text( "Programação"),
-Text("Flutter"),
-
-          ]
-       ), 
+            ElevatedButton(
+              onPressed: eventoBotao,
+              child: Text("Cancelar"),
+            ),
+            ElevatedButton(
+              onPressed:eventoBotao,
+              child: Text("Salvar"),
+            ),
+            Column(
+              children: [
+                Text("Aprendendo"),
+                Text("Programação"),
+                Text("Flutter"),
+              ],
+            ),
+          ],
+        ), 
       ),
     );
   }
