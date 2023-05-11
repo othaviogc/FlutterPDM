@@ -1,54 +1,55 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import './perguntas.dart';
 
-main() {
-  runApp(AulaGrupoDois());
+void main() {
+  runApp(MyApp());
 }
 
-class AulaGrupoDois extends StatefulWidget {
-  @override
-  State<AulaGrupoDois> createState() => _AulaGrupoDoisState();
-}
-
-class _AulaGrupoDoisState extends State<AulaGrupoDois> {
-  var contador = 0;
-
-  final perguntas = [
-    "Qual a cor favorita?",
-    "Comida favorita?",
-    "Animal que mais gosta?",
-    "O que faz nas horas vagas?"
-  ];
-
-  @override
-  void clicou() {
-    setState(() {
-      contador = contador + 1;
-    });
-    print(contador);
-  }
-
+class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text("Jogo das perguntas"),
-        ),
-        body: Column(
+      home: HomePage(),
+    );
+  }
+}
+
+class HomePage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Meu App"),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(perguntas[contador]),
-            Perguntas(perguntas[contador]),
-            ElevatedButton(onPressed: clicou, child: Text("Azul")),
-            ElevatedButton(onPressed: null, child: Text("Verde")),
-            ElevatedButton(onPressed: null, child: Text("Vermelho")),
-            ElevatedButton(onPressed: null, child: Text("Amarelo")),
-            NovoBotao(
-              texto: "Novo Botão",
-              acao: () {
-                print("Clicou no Novo Botão!");
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => TelaCor(cor: Colors.blue)),
+                );
               },
+              child: Text("TELA AZUL"),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => TelaCor(cor: Colors.green)),
+                );
+              },
+              child: Text("TELA VERDE"),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => TelaCor(cor: Colors.black)),
+                );
+              },
+              child: Text("TELA PRETA"),
             ),
           ],
         ),
@@ -57,18 +58,15 @@ class _AulaGrupoDoisState extends State<AulaGrupoDois> {
   }
 }
 
-class NovoBotao extends StatelessWidget {
-  final String texto;
-  final VoidCallback acao;
+class TelaCor extends StatelessWidget {
+  final Color cor;
 
-  const NovoBotao({Key? key, required this.texto, required this.acao})
-      : super(key: key);
+  TelaCor({required this.cor});
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
-      onPressed: acao,
-      child: Text(texto),
+    return Container(
+      color: cor,
     );
   }
 }
