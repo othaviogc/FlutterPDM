@@ -2,24 +2,6 @@ import 'package:flutter/material.dart';
 import 'questao.dart';
 import 'resposta.dart';
 
-void main() {
-  runApp(AulaComponentes());
-}
-
-class AulaComponentes extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('Aula de Componentes'),
-        ),
-        body: Questionario(),
-      ),
-    );
-  }
-}
-
 class Questionario extends StatefulWidget {
   @override
   _QuestionarioState createState() => _QuestionarioState();
