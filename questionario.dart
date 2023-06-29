@@ -9,7 +9,6 @@ class Questionario extends StatefulWidget {
 
 class _QuestionarioState extends State<Questionario> {
   var perguntaAtual = 0;
-  var cor = Colors.white;
 
   final List<Map<String, Object>> perguntas = [
     {
@@ -42,20 +41,27 @@ class _QuestionarioState extends State<Questionario> {
     List<Widget> respostas = [];
 
     if (temPergunta) {
-      for (var resposta in perguntas[perguntaAtual]['respostas'] as List<String>) {
+      for (var resposta
+          in perguntas[perguntaAtual]['respostas'] as List<String>) {
         respostas.add(
           Resposta(resposta, acao),
         );
       }
     }
-
-    return Column(
-      children: [
-        temPergunta
+    
+ return Scaffold(
+      appBar: AppBar(
+        title: temPergunta
             ? Questao(perguntas[perguntaAtual]['texto'].toString())
-            : Text("Terminou"),
-        ...respostas,
-      ],
+            : Text('Fim das perguntas!'),
+      ),
+      body: temPergunta
+          ? Column(
+              children: [
+                ...respostas,
+              ],
+            )
+          : Text('Terminou'),
     );
   }
 }
